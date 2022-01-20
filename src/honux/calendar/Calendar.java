@@ -46,8 +46,8 @@ public class Calendar {
 		System.out.printf("%d월은 %d일까지 있습니다. \n", month, cal.getmaxDaysOfMonth(month));
 		
 //		cal.madeByDahyunMaxCalendar();
-	 // >> public void 로만 작성한 거를 부를 때 사용하는 방법.
-		
+		// >> public void 로만 작성한 거를 부를 때 사용하는 방법.
+
 		scanner.close();
 	}
 
