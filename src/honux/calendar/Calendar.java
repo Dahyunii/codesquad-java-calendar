@@ -40,15 +40,40 @@ public class Calendar {
 		// (강의)숫자를 입력받아 해당하는 달의 최대 일수를 출력하는 프로그램
 		Scanner scanner = new Scanner(System.in);
 		Calendar cal = new Calendar();
-		System.out.println("달을 입력하세요.");
-		int month = scanner.nextInt();
 		
-		System.out.printf("%d월은 %d일까지 있습니다. \n", month, cal.getmaxDaysOfMonth(month));
+		System.out.println("반복 횟수를 입력하세요.");
+		int repeat = scanner.nextInt();
 		
+		for(int i = 0; i < repeat; i++) {
+			System.out.println("달을 입력하세요");
+			int month = scanner.nextInt();
+			System.out.printf("%d월은 %d일까지 있습니다. \n", month, cal.getmaxDaysOfMonth(month));
+		}
+		
+		System.out.println("반복을 종료합니다.");
+		scanner.close();
+		
+		
+//		System.out.println("반복 횟수를 입력하세요.");
+//		int repeat = scanner.nextInt();
+//		int month = 0;
+//		
+//		if(month > 0 | month < 13) {
+//			for(int i = 0; i < repeat; i++) {
+//				System.out.println("달을 입력하세요.");
+//				month = scanner.nextInt();
+//				System.out.printf("%d월은 %d일까지 있습니다. \n", month, cal.getmaxDaysOfMonth(month));
+//			}
+//			System.out.println("반복을 종료합니다.");
+//		}else {
+//			System.out.println("1월부터 12월까지만 입력이 가능합니다.");
+//		}
+
 //		cal.madeByDahyunMaxCalendar();
 		// >> public void 로만 작성한 거를 부를 때 사용하는 방법.
 
-		scanner.close();
+//		scanner.close();
+		
 	}
 
 }
