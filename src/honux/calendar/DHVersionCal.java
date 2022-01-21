@@ -20,7 +20,7 @@ public class DHVersionCal {
 			month = sc.nextInt();
 			if(month == 0) {
 				break;
-			}else if(month < 0 | month > 12) {
+			}else if(month < 0 || month > 12) {
 				System.out.println("1월부터 12월까지만 입력이 가능합니다.");
 				continue;
 			}
