@@ -1,6 +1,5 @@
 package honux.calendar;
 
-import java.time.Month;
 import java.util.Scanner;
 
 public class Calendar {
@@ -49,10 +48,9 @@ public class Calendar {
 			System.out.println("달을 입력하세요");
 			System.out.print(PROMPT);
 			month = scanner.nextInt();
-			if(month == -1) {
+			if(month == 0) {
 				break;
-			}
-			if(month > 12) {
+			}else if(month > 12 | month < 0) {
 				System.out.println("1월부터 12월까지만 입력이 가능합니다.");
 				continue;
 			}
