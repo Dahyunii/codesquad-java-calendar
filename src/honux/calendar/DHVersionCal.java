@@ -60,11 +60,6 @@ public class DHVersionCal {
 			return 0; // default
 	}
 
-	// 변하지 않는 변수명은 대문자로
-//	private final static String PROMPT_Y = "YEAR> ";
-//	private final static String PROMPT_M = "MONTH> ";
-//	private final static String PROMPT_D = "WEEKDAY> ";
-
 	public void runPrompt() {
 		Scanner scanner = new Scanner(System.in);
 		Calendar cal = new Calendar();
@@ -87,8 +82,7 @@ public class DHVersionCal {
 			month = scanner.nextInt();
 			// 잘못된 월을 입력했을 때의 안내문
 			if (month > 12 || month < 1) {
-				System.out.println("1월부터 12월까지만 입력이 가능합니다.");
-				System.out.println(); // 개행
+				System.out.println("나도 잔디 심었는데, 왜 안뜨냐ㅜ");
 				continue;
 			}
 			
