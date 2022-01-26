@@ -109,9 +109,9 @@ public class Calendar {
 	}
 	
 	// simple test code here
-	public static void main(String[] arg) {
-		Calendar calendar = new Calendar();
-		System.out.println(calendar.getWeekday(1970, 1, 1));
-		System.out.println(calendar.getWeekday(1970, 1, 5));
-	}
+//	public static void main(String[] arg) {
+//		Calendar calendar = new Calendar();
+//		System.out.println(calendar.getWeekday(1970, 1, 1));
+//		System.out.println(calendar.getWeekday(1970, 1, 5));
+//	}
 }
