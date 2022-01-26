@@ -1,9 +1,26 @@
 package honux.calendar_final;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class NewCalendar {
 	
 		private final int[] MAX_DAYS = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 		private final int[] LEAP_MAX_DAYS = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+		
+		/**
+		 * 
+		 * @param strDate : ex) "2022-01-27"
+		 * @param plan
+		 * @throws ParseException 
+		 */
+		// 캘린더에 일정 등록 메소드
+		public void registerPlan(String strDate, String plan) throws ParseException{
+			Date date = new SimpleDateFormat("yyyy-MM-dd").parse(strDate);
+			System.out.println();
+		}
+		 
 		
 		// 윤년 계산
 		public boolean isLeapYear(int year) {
