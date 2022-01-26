@@ -69,11 +69,11 @@ public class Calendar {
 
 	}
 
-	private int getWeekday(int year, int month, int day) {
+		private int getWeekday(int year, int month, int day) {
 		// 컴퓨터의 캘린더가 1970년을 기준으로 하므로, 1970년 1월 1을 기준으로 요일을 count한다.
 		// 1970년 1월 1일 -> 목요일
 		int syear = 1970;
-		final int STANDARDWEEKDAY = 3; // 1970/Jan/1st = Thursday
+		final int STANDARDWEEKDAY = 4; // 1970/Jan/1st = Thursday
 		
 		int count = 0;	// total days
 		// YEAR
@@ -91,15 +91,21 @@ public class Calendar {
 		}
 		
 		// DAY
-		count += day;
+		count += day - 1;
 		// getWeekday에 int day에 입력하는 숫자만큼 일수를 count한다.
-		// ex) 1월 1일 -> 1, 1월 3일 -> 3으로 count.
+		// ex) 1월 1일 -> 1월 3일 => 2일로 count.
 		
 		// WEEKDAY(요일)
 		int weekday = (count + STANDARDWEEKDAY) % 7;
-		// day의 숫자 + 1970년 1월 1일은 목요일로 '3'에 해당한다.
+		// (day의 숫자 - 1) + 1970년 1월 1일은 목요일로 '4'에 해당한다.
 		// 두 수를 더한 후 7로 나눈 나머지는 해당 숫자의 요일을 나타낸다.
 		return weekday;
+		/**
+		 int weekday는 getWeekday의 인수를 입력받는데, day의 입력값은 1이다.
+		 캘린더의 SU는 숫자 0을 의미하고, 기준 일인 1970년 1월 1일 목요일은 숫자 4이다.
+		 이에, 요일을 출력하기 위해 계산하는 int weekday = (count + STANDARDWEEKDAY) % 7; 부분에서 1970년 1월 1일 요일을 출력하기 위해서는 7로 나누기 전의 값이 4가 되어야한다.
+		 따라서 위의 // DAY를 출력하기 위한 count의 대입 값은 day에서 - 1을 해주어야 한다.
+		 */
 	}
 	
 	// simple test code here
