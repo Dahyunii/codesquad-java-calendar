@@ -93,17 +93,21 @@ public class NewPrompt {
 		System.out.println("날짜를 입력해주세요.(ex: yyyy-MM-dd)");
 		String date = sc.next();
 		String text = "";
-		System.out.println("일정을 입력해주세요.(단, 문장 끝에 . 입력)");
-		
-		while(true) {
-			String word = sc.next();
-			text += word + " ";
-			if(word.endsWith(".")) {
-				break;
-			}
-		}
+		sc.nextLine();	// ignore one newline
+		System.out.println("일정을 입력해 주세요.");
+		text = sc.nextLine();
 		
 		Ncal.registerPlan(date, text);
+		
+//		System.out.println("일정을 입력해주세요.(단, 문장 끝에 . 입력)");
+//		while(true) {
+//			String word = sc.next();
+//			text += word + " ";
+//			if(word.endsWith(".")) {
+//				break;
+//			}
+//		}
+//		Ncal.registerPlan(date, text);
 	}
 
 	public static void main(String[] args) throws ParseException {
