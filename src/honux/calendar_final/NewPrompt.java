@@ -30,21 +30,43 @@ public class NewPrompt {
 			System.out.println(">> ");
 			String cmd = scanner.next();
 			System.out.println(); // 개행
-
-			if (cmd.equals("1"))
+			
+			switch(cmd) {
+			case "1" :
 				cmdRegister(scanner, Ncal);
-			else if (cmd.equals("2"))
+				continue;
+			case "2" :
 				cmdSearch(scanner, Ncal);
-			else if (cmd.equals("3"))
+				continue;
+			case "3" :
 				cmdPrint(scanner, Ncal);
-			else if (cmd.equals("h"))
+				continue;
+			case "h" :
 				printMenu();
-			else if (cmd.equals("q"))
+				continue;
+			case "q" :
+				System.out.println("캘린더 입력을 종료합니다.");
 				break;
+			default :
+				System.out.println("다시 입력해 주세요.");
+				break;
+			}
+			return;	// 함수(메소드)를 종료하기 위해서는 return을 입력한다. (반복문 종료는 break)
+			
+//			if (cmd.equals("1"))
+//				cmdRegister(scanner, Ncal);
+//			else if (cmd.equals("2"))
+//				cmdSearch(scanner, Ncal);
+//			else if (cmd.equals("3"))
+//				cmdPrint(scanner, Ncal);
+//			else if (cmd.equals("h"))
+//				printMenu();
+//			else if (cmd.equals("q"))
+//				break;
 		}
 
-		System.out.println("캘린더 입력을 종료합니다.");
-		scanner.close();
+//		System.out.println("캘린더 입력을 종료합니다.");
+//		scanner.close();
 	}
 
 	private void cmdPrint(Scanner sc, NewCalendar Ncal) {
