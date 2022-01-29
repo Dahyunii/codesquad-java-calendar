@@ -51,59 +51,36 @@ public class NewPrompt {
 		printMenu();
 
 		// 강의에서 구현한 switch문(wheil문 빠져나가기 위해 boolean 선언)
-		boolean isLoop = true;
-		while (isLoop) {
-			System.out.println();
-			System.out.println("입력(1, 2, 3, h, q)");
-			System.out.println(">> ");
-			String cmd = scanner.next();
-			System.out.println(); // 개행
-			
-			switch(cmd) {
-			case "1" :
-				cmdRegister(scanner, Ncal);
-				break;
-			case "2" :
-				cmdSearch(scanner, Ncal);
-				break;
-			case "3" :
-				cmdPrint(scanner, Ncal);
-				break;
-			case "h" :
-				printMenu();
-				break;
-			case "q" :
-				System.out.println("캘린더 입력을 종료합니다.");
-				isLoop = false;
-				break;
-			default :
-				System.out.println("다시 입력해 주세요.");
-				continue;
-			}
-			
-			// 내가 구현한 switch문(while문 빠져나가기 위해 return 사용)
+//		boolean isLoop = true;
+//		while (isLoop) {
+//			System.out.println();
+//			System.out.println("입력(1, 2, 3, h, q)");
+//			System.out.println(">> ");
+//			String cmd = scanner.next();
+//			System.out.println(); // 개행
+//			
 //			switch(cmd) {
 //			case "1" :
 //				cmdRegister(scanner, Ncal);
-//				continue;
+//				break;
 //			case "2" :
 //				cmdSearch(scanner, Ncal);
-//				continue;
+//				break;
 //			case "3" :
 //				cmdPrint(scanner, Ncal);
-//				continue;
+//				break;
 //			case "h" :
 //				printMenu();
-//				continue;
+//				break;
 //			case "q" :
 //				System.out.println("캘린더 입력을 종료합니다.");
+//				isLoop = false;
 //				break;
 //			default :
 //				System.out.println("다시 입력해 주세요.");
 //				continue;
 //			}
-//			return;	// 함수(메소드)를 종료하기 위해서는 return을 입력한다. (반복문 종료는 break)
-			
+//		}
 //			if (cmd.equals("1"))
 //				cmdRegister(scanner, Ncal);
 //			else if (cmd.equals("2"))
@@ -114,6 +91,37 @@ public class NewPrompt {
 //				printMenu();
 //			else if (cmd.equals("q"))
 //				break;
+		
+			
+			// 내가 구현한 switch문(while문 빠져나가기 위해 return 사용)
+			while (true) {
+				System.out.println();
+				System.out.println("입력(1, 2, 3, h, q)");
+				System.out.println(">> ");
+				String cmd = scanner.next();
+				System.out.println(); // 개행
+				
+			switch(cmd) {
+			case "1" :
+				cmdRegister(scanner, Ncal);
+				continue;
+			case "2" :
+				cmdSearch(scanner, Ncal);
+				continue;
+			case "3" :
+				cmdPrint(scanner, Ncal);
+				continue;
+			case "h" :
+				printMenu();
+				continue;
+			case "q" :
+				System.out.println("캘린더 입력을 종료합니다.");
+				break;
+			default :
+				System.out.println("다시 입력해 주세요.");
+				continue;
+			}
+			return;	// 함수(메소드)를 종료하기 위해서는 return을 입력한다. (반복문 종료는 break)
 		}
 
 //		System.out.println("캘린더 입력을 종료합니다.");
