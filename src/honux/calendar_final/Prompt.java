@@ -5,28 +5,28 @@ import java.util.Scanner;
 public class Prompt {
 
 	/**
-	 * 
 	 * @param week 요일명
 	 * @return 0 ~ 6 (0 = Sunday, 6 = Saturday)
+	 * (더이상 '요일'은 입력받지 않기 때문에 parseDay 메소드는 필요하지 않음)
 	 */
-	public int parseDay(String week) {
-		if (week.equals("SU"))
-			return 0;
-		else if (week.equals("MO"))
-			return 1;
-		else if (week.equals("TU"))
-			return 2;
-		else if (week.equals("WE"))
-			return 3;
-		else if (week.equals("TH"))
-			return 4;
-		else if (week.equals("FR"))
-			return 5;
-		else if (week.equals("SA"))
-			return 6;
-		else
-			return 0; // default
-	}
+//	public int parseDay(String week) {
+//		if (week.equals("SU"))
+//			return 0;
+//		else if (week.equals("MO"))
+//			return 1;
+//		else if (week.equals("TU"))
+//			return 2;
+//		else if (week.equals("WE"))
+//			return 3;
+//		else if (week.equals("TH"))
+//			return 4;
+//		else if (week.equals("FR"))
+//			return 5;
+//		else if (week.equals("SA"))
+//			return 6;
+//		else
+//			return 0; // default
+//	}
 
 	// 변하지 않는 변수명은 대문자로
 	private final static String PROMPT_Y = "YEAR> ";
@@ -48,7 +48,7 @@ public class Prompt {
 				break;
 			}
 
-			System.out.println("달을 입력하세요");
+			System.out.println("달을 입력하세요.");
 			System.out.print(PROMPT_M);
 			month = scanner.nextInt();
 			// 잘못된 월을 입력했을 때의 안내문
