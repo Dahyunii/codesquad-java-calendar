@@ -14,6 +14,32 @@ public class NewPrompt {
 		System.out.println("+--------------------+");
 	}
 
+	/**
+	 * 
+	 * @param week 요일
+	 * @return 0 ~ 6 (0 = Sunday, 6 = Saturday)
+	 */
+	public int parseDay(String week) {
+		switch (week) {
+		case "SU" :
+			return 0;
+		case "MO" :
+			return 1;
+		case "TU" :
+			return 2;
+		case "WE" :
+			return 3;
+		case "TH" :
+			return 4;
+		case "FR" :
+			return 5;
+		case "SA" :
+			return 6;
+		default :
+			return 0;
+		}
+	}
+	
 	public void runPrompt() throws ParseException {
 		/**
 		 * 메서드를 새로 생성할 때마다 scanner와 클래스를 불러오는 것은 비효율적이다. 따라서 이미 불러놓은 것이 있다면 참조해서 사용하는 것이
@@ -24,7 +50,9 @@ public class NewPrompt {
 
 		printMenu();
 
-		while (true) {
+		// 강의에서 구현한 switch문(wheil문 빠져나가기 위해 boolean 선언)
+		boolean isLoop = true;
+		while (isLoop) {
 			System.out.println();
 			System.out.println("입력(1, 2, 3, h, q)");
 			System.out.println(">> ");
@@ -34,24 +62,47 @@ public class NewPrompt {
 			switch(cmd) {
 			case "1" :
 				cmdRegister(scanner, Ncal);
-				continue;
+				break;
 			case "2" :
 				cmdSearch(scanner, Ncal);
-				continue;
+				break;
 			case "3" :
 				cmdPrint(scanner, Ncal);
-				continue;
+				break;
 			case "h" :
 				printMenu();
-				continue;
+				break;
 			case "q" :
 				System.out.println("캘린더 입력을 종료합니다.");
+				isLoop = false;
 				break;
 			default :
 				System.out.println("다시 입력해 주세요.");
-				break;
+				continue;
 			}
-			return;	// 함수(메소드)를 종료하기 위해서는 return을 입력한다. (반복문 종료는 break)
+			
+			// 내가 구현한 switch문(while문 빠져나가기 위해 return 사용)
+//			switch(cmd) {
+//			case "1" :
+//				cmdRegister(scanner, Ncal);
+//				continue;
+//			case "2" :
+//				cmdSearch(scanner, Ncal);
+//				continue;
+//			case "3" :
+//				cmdPrint(scanner, Ncal);
+//				continue;
+//			case "h" :
+//				printMenu();
+//				continue;
+//			case "q" :
+//				System.out.println("캘린더 입력을 종료합니다.");
+//				break;
+//			default :
+//				System.out.println("다시 입력해 주세요.");
+//				continue;
+//			}
+//			return;	// 함수(메소드)를 종료하기 위해서는 return을 입력한다. (반복문 종료는 break)
 			
 //			if (cmd.equals("1"))
 //				cmdRegister(scanner, Ncal);
