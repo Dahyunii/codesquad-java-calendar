@@ -12,10 +12,10 @@ public class CalendarClass {
 
 	// 일정 등록을 위해 검색기능 필요 > HashMap 클래스 사용
 	// HashMap 클래스 이름인 planMap을 초기화해야하는데, 생성자를 호출할 때 초기화를 해주어야 한다.
-	private HashMap<Date, String> planMap;
+	private HashMap<Date, PlanItem> planMap;
 
 	public CalendarClass() {
-		planMap = new HashMap<Date, String>();
+		planMap = new HashMap<Date, PlanItem>();
 	}
 
 	/**
@@ -25,21 +25,16 @@ public class CalendarClass {
 	 * @throws ParseException
 	 */
 	// 캘린더에 일정 등록 메소드
-	public void registerPlan(String strDate, String plan) throws ParseException {
-		// date는 검색이 가능하도록 해야한다. 일정 등록 후 해당 date에 작성한 일정이 뜨도록 해야하기 때문
-		// 이 때, hashMap 클래스를 사용한다.
-		Date date = new SimpleDateFormat("yyyy-MM-dd").parse(strDate);
-//			System.out.println(date);
-
-		// HashMap의 데이터를 저장
-		planMap.put(date, plan);
+	public void registerPlan(String strDate, String plan){
+		PlanItem p = new PlanItem(strDate, plan);
+		// HashMap의 데이터를 저장 >> planItem 클래스에서 key값을 가져와야 한다.
+		planMap.put(p.getDate(), p);
 	}
 
 	// 캘린더 일정 검색 메소드
-	public String searchPlan(String strDate) throws ParseException {
+	public PlanItem searchPlan(String strDate) throws ParseException {
 		Date date = new SimpleDateFormat("yyyy-MM-dd").parse(strDate);
-		String plan = planMap.get(date);
-		return plan;
+		return planMap.get(date);
 	}
 
 	// 윤년 계산
