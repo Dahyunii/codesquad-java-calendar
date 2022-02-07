@@ -1,7 +1,6 @@
 package calendarUsingClass;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -19,7 +18,6 @@ public class CalendarClass {
 	}
 
 	/**
-	 * 
 	 * @param strDate : ex) "2022-01-27"
 	 * @param plan
 	 * @throws ParseException
@@ -32,8 +30,8 @@ public class CalendarClass {
 	}
 
 	// 캘린더 일정 검색 메소드
-	public PlanItem searchPlan(String strDate) throws ParseException {
-		Date date = new SimpleDateFormat("yyyy-MM-dd").parse(strDate);
+	public PlanItem searchPlan(String strDate){
+		Date date = PlanItem.getDateFromString(strDate);
 		return planMap.get(date);
 	}
 
