@@ -115,24 +115,21 @@ public class PromptClass {
 		System.out.println("[일정 검색]");
 		System.out.println("날짜를 입력해주세요.(ex: yyyy-MM-dd)");
 		String date = sc.next();
-		String plan = "";
-		try {
-			plan = cc.searchPlan(date);
-		} catch (ParseException e) {
-			e.printStackTrace();	// 에러 메세지의 발생 근원지를 찾아 단계별로 에러 출력
-			System.out.println("일정 검색 중 오류 발생");
+		PlanItem plan;
+		plan = cc.searchPlan(date);
+		if(plan != null) {
+			System.out.println(plan.detail);
+		} else {
+			System.out.println("일정이 없습니다.");
 		}
-		System.out.println(plan);
 	}
 
 	private void cmdRegister(Scanner sc, CalendarClass cc) throws ParseException {
 		System.out.println("[새 일정 등록]");
 		System.out.println("날짜를 입력해주세요.(ex: yyyy-MM-dd)");
 		String date = sc.next();
-		String text = "";
-		sc.nextLine();	// ignore one newline
 		System.out.println("일정을 입력해 주세요.");
-		text = sc.nextLine();
+		String text = sc.next();
 		
 		cc.registerPlan(date, text);
 		
@@ -144,7 +141,7 @@ public class PromptClass {
 //				break;
 //			}
 //		}
-//		Ncal.registerPlan(date, text);
+//		cc.registerPlan(date, text);
 	}
 
 	public static void main(String[] args) throws ParseException {
