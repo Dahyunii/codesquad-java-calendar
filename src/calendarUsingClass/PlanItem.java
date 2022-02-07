@@ -18,10 +18,11 @@ public class PlanItem {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		return date;	// 오류 발생시 date(null값이 return 된다.)
+		return date;	// 오류 발생시 date 출력(null값이 return 된다.)
 	}
 	
 	public PlanItem(String date, String detail) {
+		this.planDate = getDateFromString(date);
 		this.detail = detail;
 	}
 	
