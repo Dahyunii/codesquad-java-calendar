@@ -3,7 +3,6 @@ package calendarUsingClass;
 import java.text.ParseException;
 import java.util.Scanner;
 
-
 public class PromptClass {
 	public void printMenu() {
 		System.out.println("+--------------------+");
@@ -55,7 +54,7 @@ public class PromptClass {
 		while (isLoop) {
 			System.out.println();
 			System.out.println("입력(1, 2, 3, h, q)");
-			System.out.println(">> ");
+			System.out.print(">> ");
 			String cmd = scanner.next();
 			System.out.println(); // 개행
 			
@@ -128,20 +127,35 @@ public class PromptClass {
 		System.out.println("[새 일정 등록]");
 		System.out.println("날짜를 입력해주세요.(ex: yyyy-MM-dd)");
 		String date = sc.next();
-		System.out.println("일정을 입력해 주세요.");
-		String text = sc.next();
+		
+		String text = "";
+		String word;
+		System.out.println("일정을 입력해주세요.(단, 문장 끝에 ; 입력)");
+		
+		while(!(word = sc.next()).endsWith(";")) {
+			text += word + " ";
+		}
+		word = word.replace(";", "");
+		text += word;
 		
 		cc.registerPlan(date, text);
 		
-//		System.out.println("일정을 입력해주세요.(단, 문장 끝에 . 입력)");
+		/**
+		 * 수정하기 전 코드(2가지)
+		 */
+//		System.out.println("일정을 입력해주세요.");
+//		String text = sc.next();
+//		
+//		cc.registerPlan(date, text);
+		
 //		while(true) {
 //			String word = sc.next();
 //			text += word + " ";
-//			if(word.endsWith(".")) {
+//			if(word.endsWith(";")) {
 //				break;
 //			}
 //		}
-//		cc.registerPlan(date, text);
+		
 	}
 
 	public static void main(String[] args) throws ParseException {
