@@ -11,7 +11,7 @@ public class PlanItem {
 	
 	// 날짜를 돌려주는 메소드
 	public static Date getDateFromString(String strDate) {
-		// string 타입으로 Date 타입의 변수에 넣기 위해
+		// string 타입을 Date 타입으로 변환
 		Date date = null;	// null 값으로 초기화
 		try {
 			date = new SimpleDateFormat("yyyy-MM-dd").parse(strDate);
@@ -32,5 +32,12 @@ public class PlanItem {
 	
 	public void addPeople(String name) {
 		peoples += name + ", ";
+	}
+
+	public String saveString() {
+		// date 타입을 String 타입으로 변환
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		String sdate = formatter.format(planDate);
+		return sdate + ", " + "\"" + detail + "\"" + "\n";	// "\"" => " 출력
 	}
 }
