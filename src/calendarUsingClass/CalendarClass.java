@@ -1,20 +1,47 @@
 package calendarUsingClass;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Scanner;
 
 public class CalendarClass {
 
-	private final int[] MAX_DAYS = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-	private final int[] LEAP_MAX_DAYS = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-
+	private static final int[] MAX_DAYS = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+	private static final int[] LEAP_MAX_DAYS = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+	private static final String SAVE_FILE = "calendar.dat";
+	
 	// 일정 등록을 위해 검색기능 필요 > HashMap 클래스 사용
 	// HashMap 클래스 이름인 planMap을 초기화해야하는데, 생성자를 호출할 때 초기화를 해주어야 한다.
 	private HashMap<Date, PlanItem> planMap;
 
 	public CalendarClass() {
 		planMap = new HashMap<Date, PlanItem>();
+		File f = new File(SAVE_FILE);
+		if(!f.exists()) {
+			System.err.println("No save file");
+			return;
+		}else {
+			try {
+				Scanner sc = new Scanner(f);
+				while(sc.hasNext()) {
+					String line = sc.nextLine();	// nextLine : 문자열을 입력받아 리턴하는 메소드
+					String[] words =line.split(",");	// line(한줄의 문자열)을 콤마로 나눠서 words라는 배열에 넣으라는 의미
+					String date = words[0];
+					String detail = words[1].replaceAll("\"", "");
+					System.out.println(date + ":" + detail);	// 잘 구현되었는지 확인하는 print문
+					PlanItem p = new PlanItem(date, detail);
+					planMap.put(p.getDate(), p);
+				}
+				sc.close();
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	/**
@@ -27,6 +54,18 @@ public class CalendarClass {
 		PlanItem p = new PlanItem(strDate, plan);
 		// HashMap의 데이터를 저장 >> planItem 클래스에서 key값을 가져와야 한다.
 		planMap.put(p.getDate(), p);
+		
+		File f = new File(SAVE_FILE);	// ()안에 파일 이름 작성 -> 파일 이름은 final로 변수 처리하여 다음에도 계속 사용할 수 있도록 한다.
+		
+		String item = p.saveString();	// Date 타입의 strDate를 String형 타입으로 변환하고, 파일형식(format)을 CSV 형식으로 저장하기 위해 생성한 메소드를 대입한다. (saveString은 PlanItem 클래스의 메소드)
+		// 파일 입출력
+		try {
+			FileWriter fw = new FileWriter(f, true);
+			fw.write(item);
+			fw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	// 캘린더 일정 검색 메소드
